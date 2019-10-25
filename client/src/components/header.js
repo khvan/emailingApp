@@ -10,7 +10,7 @@ const Header = () => {
         uPath
       </Link>
       <div className="right menu" />
-      <Link to="/" className="item">
+      <Link to="/streams/list" className="item">
         All Streams
       </Link>
       <Auth />
