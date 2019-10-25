@@ -5,7 +5,7 @@ import StreamDelete from './streams/StreamDelete';
 import StreamEdit from './streams/StreamEdit';
 import StreamList from './streams/StreamList';
 import StreamShow from './streams/StreamShow';
-import HomePage from './'
+import HomePage from './HomePage';
 import history from '../history';
 import Header from './header';
 
