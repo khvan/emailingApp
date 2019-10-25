@@ -1,22 +1,32 @@
 import React from 'react';
-import Auth from './Auth';
-import {Router} from 'react-router-dom';
-import history from './history';
-import axios from 'axios';
+import {Router, Route, Switch} from 'react-router-dom';
+import StreamCreate from './streams/StreamCreate';
+import StreamDelete from './streams/StreamDelete';
+import StreamEdit from './streams/StreamEdit';
+import StreamList from './streams/StreamList';
+import StreamShow from './streams/StreamShow';
+import HomePage from './'
+import history from '../history';
+import Header from './header';
 
-
-class App extends React.Component{
-  render(){
-    return (
-      <div>
-      <Router history={history}>
-      <Auth />
-      </Router>
-      </div>
-    )
-  }
-
-
+const App = () => {
+  return(
+ <div className="ui container"> 
+  <Router history={history}>
+    <div>
+      <Header />
+      <Switch>
+        <Route path="/" exact component = {HomePage} />
+        <Route path="/streams/list" exact component = {StreamList} />
+        <Route path="/streams/new" exact component = {StreamCreate} />
+        <Route path="/streams/delete/:id" exact component = {StreamDelete} />
+        <Route path="/streams/edit/:id"  exact component = {StreamEdit} />
+        <Route path="/streams/:id" exact component = {StreamShow} />
+      </Switch>
+    </div>
+  </Router>
+  </div>
+  )
 }
 
 

@@ -5,7 +5,7 @@ class Auth extends React.Component {
     return (
       <div>
         <a
-          href="http://localhost:5000/auth/google"
+          href="/auth/google"
           className="ui button secondary"
         >
           Sign in with Google
