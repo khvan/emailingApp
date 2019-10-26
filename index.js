@@ -4,10 +4,8 @@ const cors = require('cors')
 const keys = require ('./config/keys');
 const cookieSession = require('cookie-session');
 const passport = require('passport');
+const bodyParser = require('body-parser');
 
-require ('./models/User');
-require ('./models/Streams');
-require ('./services/passport');
 
 
 
@@ -15,6 +13,14 @@ require ('./services/passport');
 
 
 const app = express ();
+
+// Middleware for parsing body into a workable json
+app.use(bodyParser.json())
+
+
+require ('./models/User');
+require ('./models/Streams');
+require ('./services/passport');
 
 app.use(cors())
 app.use(
@@ -27,26 +33,29 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.use (express.urlencoded ({extended: true}));
+
 
 mongoose.connect (keys.mongoURI);
 
 require ('./routes/authRoutes') (app);
+require ('./models/Streams') (app);
 
 app.get ('/', (req, res) => {
   res.send ({hello: 'world?'});
 });
 
-app.get('/streams', (req,res)=>{ 
-  res.json({msg: 'Good STUFF!'})
+// app.get('/streams', (req,res)=>{ 
+//   res.json({msg: 'Good STUFF!'})
 
 
-  // streams.find({}, (err, streams)=>{
-  //   if (err){
-  //     res.send('trouble')
-  //   }
-  //   streams.json()
-  // })
-})
+//   // streams.find({}, (err, streams)=>{
+//   //   if (err){
+//   //     res.send('trouble')
+//   //   }
+//   //   streams.json()
+//   // })
+// })
 
 
 
