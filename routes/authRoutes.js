@@ -5,7 +5,9 @@ module.exports = app => {
     '/auth/google',
     passport.authenticate ('google', {
       scope: ['profile', 'email'],
-    })
+    }), (req,res)=> {
+      res.redirect('http://localhost:3000')
+    }
   );
   app.get('/api/logout', (req, res)=>{
     req.logout();

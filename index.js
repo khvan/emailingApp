@@ -3,8 +3,9 @@ const mongoose = require ('mongoose');
 const keys = require ('./config/keys');
 const cookieSession = require('cookie-session');
 const passport = require('passport');
-
+const Streams = require('./models/Streams')
 require ('./models/User');
+require ('./models/Streams');
 require ('./services/passport');
 
 const app = express ();
@@ -27,6 +28,10 @@ require ('./routes/authRoutes') (app);
 app.get ('/', (req, res) => {
   res.send ({hello: 'world?'});
 });
+
+app.get('/streams', (req,res)=>{ 
+  Streams.select
+})
 
 const PORT = process.env.PORT || 5000;
 app.listen (PORT);
