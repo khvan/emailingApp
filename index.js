@@ -1,15 +1,22 @@
 const express = require ('express');
 const mongoose = require ('mongoose');
+const cors = require('cors')
 const keys = require ('./config/keys');
 const cookieSession = require('cookie-session');
 const passport = require('passport');
-const Streams = require('./models/Streams')
+
 require ('./models/User');
 require ('./models/Streams');
 require ('./services/passport');
 
+
+
+
+
+
 const app = express ();
 
+app.use(cors())
 app.use(
   cookieSession({
     maxAge: 30 * 24 * 60 * 60 * 1000,
@@ -30,8 +37,18 @@ app.get ('/', (req, res) => {
 });
 
 app.get('/streams', (req,res)=>{ 
-  Streams.select
+  res.json({msg: 'Good STUFF!'})
+
+
+  // streams.find({}, (err, streams)=>{
+  //   if (err){
+  //     res.send('trouble')
+  //   }
+  //   streams.json()
+  // })
 })
+
+
 
 const PORT = process.env.PORT || 5000;
 app.listen (PORT);
