@@ -10,8 +10,6 @@ const bodyParser = require('body-parser');
 
 
 
-
-
 const app = express ();
 
 // Middleware for parsing body into a workable json
@@ -62,4 +60,4 @@ app.get ('/', (req, res) => {
 
 
 const PORT = process.env.PORT || 5000;
-app.listen (PORT);
+app.listen (5000);
