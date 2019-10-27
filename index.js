@@ -17,12 +17,14 @@ const app = express ();
 // Middleware for parsing body into a workable json
 app.use(bodyParser.json())
 
-
+// models, Streams also includes route handlers for streams
 require ('./models/User');
 require ('./models/Streams');
 require ('./services/passport');
 
+// cors middleware to allow CORS requests from anywhere
 app.use(cors())
+
 app.use(
   cookieSession({
     maxAge: 30 * 24 * 60 * 60 * 1000,
