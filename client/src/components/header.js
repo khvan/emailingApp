@@ -5,7 +5,8 @@ import Auth from './Auth';
 
 const Header = () => {
   return (
-    <div className="ui secondary pointing menu ">
+    <div className="ui secondary pointing menu" 
+    style={{"backgroundImage": "linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%)"}}>
       <Link to="/" className="item">
         uPath
       </Link>
@@ -15,6 +16,7 @@ const Header = () => {
       </Link>
       <Auth />
     </div>
+   
   );
 };
 

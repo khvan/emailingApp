@@ -11,9 +11,10 @@ import Header from './header';
 
 const App = () => {
   return(
- <div className="ui container"> 
+ <div className="ui container" > 
   <Router history={history}>
-    <div>
+    <div 
+    style={{"backgroundImage": "linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%)"}}>
       <Header />
       <Switch>
         <Route path="/" exact component = {HomePage} />
