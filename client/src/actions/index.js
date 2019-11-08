@@ -10,11 +10,15 @@ import {
   EDIT_STREAM,
 } from './types';
 
-export const signIn = userId => {
-  return {
-    type: SIGN_IN,
-    payload: userId,
-  };
+export const signIn = userId =>  async dispatch =>{
+  const {userId} = getState().auth;
+  const response = await streams.post ('/streams', {...formValues, userId});
+  dispatch ({type: CREATE_STREAM, payload: response.data});
+  history.push('/')
+  // return {
+  //   type: SIGN_IN,
+  //   payload: userId,
+  // };
 };
 
 export const signOut = () => {
